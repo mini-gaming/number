@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "ranking": "/components/rank/rank"
+  }
+}
