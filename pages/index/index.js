@@ -58,6 +58,7 @@ Page({
   },
   onReady: function() {
     this.ranking = this.selectComponent("#ranking");
+    this.hover = this.selectComponent("#hover");
   },
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo

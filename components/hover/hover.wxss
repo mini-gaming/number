@@ -1,0 +1,61 @@
+.game-hover-mask{
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(51, 51, 51, .7);
+  height: 100%;
+  width: 100%;
+}
+
+.game-main {
+  position:fixed;
+  top:0;
+  right:0;
+  left:0;
+  bottom:0;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  z-index:999;
+  display:grid;
+}
+
+.game-logo image{
+  margin-left:276rpx;
+  margin-top:162rpx;
+  width:206rpx;
+  height:148rpx;
+}
+
+.game-title image {
+  margin-left:98rpx;
+  width:602rpx;
+  height:148rpx;
+}
+.game-cycle {
+  height:200rpx;
+  position:relative;
+}
+.cycle {
+  margin-left:292rpx;
+  width:200rpx;
+  height:200rpx;
+}
+
+.arrow {
+  position:absolute;
+  left:350rpx;
+  height: 56rpx;
+  width:86rpx;
+  transform: rotate(90deg);
+  top:60rpx;
+}
+
+.game-help{
+  color: white;
+  text-align: center;
+  margin-top:-130rpx;
+}

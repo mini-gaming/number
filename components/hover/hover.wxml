@@ -1,0 +1,18 @@
+<view class="game-hover" hidden="{{isHover}}">
+  <view class="game-hover-mask"></view>
+  <view class="game-main">
+    <view class="game-logo">
+      <image src="./../../resource/image/game-logo.png"></image>
+    </view>
+    <view class="game-title">
+      <image src="./../../resource/image/game-title.png"></image>
+    </view>
+    <view class="game-cycle" bindtap="hidden">
+      <image class="cycle" src="./../../resource/image/start-cycle.png"></image>
+      <image class="arrow" src="./../../resource/image/start-arrow.png"></image>
+    </view>
+    <view class="game-help">
+      <text>? 规则</text>
+    </view>
+  </view>
+</view>

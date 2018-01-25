@@ -176,11 +176,12 @@
 }
 
 .game-timer{
-  width: 568rpx;
+  width: 450rpx;
   height: 200rpx;
   background: #151921;
   text-align: center;
-  margin:0 auto;
+  margin-left:35rpx;
+  margin-right:25rpx;
   font-size:40rpx;
   color: white;
   display:block;
@@ -193,4 +194,40 @@
 
 .game-time-count {
   font-size: 64rpx;
+}
+
+.game-restart-panel {
+  display:inline-flex;
+}
+
+.game-restart{
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+  width: 180rpx;
+  height: 180rpx;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  background-color: #0099ff;
+  display:grid;
+  text-align:center;
+}
+
+.game-restart:focus {
+  width: 182rpx;
+  height: 182rpx;
+  border: 2rpx solid #0199ff;
+}
+
+.game-restart:hover {
+  width: 182rpx;
+  height: 182rpx;
+  border: 4rpx solid #f199ff;
+}
+
+.game-recycle{
+   width: 40rpx;
+   height: 40rpx;
+   margin-top: 40rpx;
+   margin-left:70rpx;
 }

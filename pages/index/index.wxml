@@ -24,12 +24,19 @@
       <view class="game-button game-start" bindtap="startGaming">{{controlBtn}}</view>
     </view>
     <block wx:else>
-      <view class="game-timer">
-        <view class="game-timer-title">计时</view>
-        <view class="game-time-count">{{timeText}}</view>
+      <view class="game-restart-panel">
+        <view class="game-timer">
+          <view class="game-timer-title">计时</view>
+          <view class="game-time-count">{{timeText}}</view>
+        </view>
+        <view class="game-restart" bindtap="startGaming">
+          <image class="game-recycle" src="./../../resource/image/restart.png"></image>
+          <text>重玩</text>
+        </view>
       </view>
     </block>
   </view>
   <!--<button type="primary" bindtap="showRanking">展示结果</button>-->
   <ranking id="ranking"></ranking>
+  <hover id="hover"></hover>
 </view>

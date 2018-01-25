@@ -1,4 +1,5 @@
 <view class="rank_container" hidden="{{!isShow}}">
+<!--<view class="rank_container">-->
   <view class="rank_mask"></view>
   <view class="rank">
     <view class="rank-time">{{time}}</view>
