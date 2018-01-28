@@ -38,5 +38,6 @@
   </view>
   <!--<button type="primary" bindtap="showRanking">展示结果</button>-->
   <ranking id="ranking"></ranking>
-  <hover id="hover"></hover>
+  <!--<hover id="hover"></hover>-->
+  <leaderboard id="leaderboard"></leaderboard>
 </view>

@@ -1,0 +1,38 @@
+<view class="leader-hover" hidden="{{isShow}}">
+  <view class="leader-hover-mask"></view>
+  <view class="leader-main">
+    <view class="leader-title">
+      <text>游戏结束</text>
+    </view>
+    <view class="leader-score" align="center">
+      <view class="leader-person-score">
+        <text class="person-score-title">您击败了全球</text>
+        <text class="person-score-percent">{{percent}}</text>
+        <text class="person-score-title">的玩家</text>
+        <view>
+          <text class="person-score">{{curretnScore}}</text>
+        </view>
+      </view>
+      <view class="leader-high-score">
+        <text class="person-score-title">个人最高</text>
+        <view class="person-high-score">
+          <text class="person-score">{{personMaxScore}}</text>
+        </view>
+      </view>
+      <view class="leader-high-score">
+         <text class="person-score-title">目标脑王</text>
+         <view class="person-high-score">
+          <text class="person-score">{{globalMaxScore}}</text>
+         </view>
+      </view>
+      <view class="game-restart" bindtap="hidden">
+        <image class="game-recycle" src="./../../resource/image/restart.png"></image>
+        <text>再来一次</text>
+      </view>
+      <view class="game-more">
+        <view class="game-box share">分享</view>
+        <view class="game-box invite">邀请</view>
+      </view>
+    </view>
+  </view>
+</view>

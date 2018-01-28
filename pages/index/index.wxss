@@ -138,7 +138,7 @@
   border-bottom: 10rpx groove #0f1014;
   border-right: 10rpx groove #080808;
   border-left:10rpx groove #080808;
-  min-height:218rpx;
+  margin:4rpx 0;
 }
 
 .game-item.game-col-4.blank{

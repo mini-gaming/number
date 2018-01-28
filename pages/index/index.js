@@ -59,6 +59,7 @@ Page({
   onReady: function() {
     this.ranking = this.selectComponent("#ranking");
     this.hover = this.selectComponent("#hover");
+    this.leaderboard = this.selectComponent("#leaderboard");
   },
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo
@@ -243,6 +244,7 @@ Page({
   showRanking() {
     let gameInfo = app.globalData.gameInfo;
     let level = gameInfo.gameType == 3 ? 1:2;
-    this.ranking.showResult(gameInfo.time, gameInfo.isFinished, level);
+    //this.ranking.showResult(gameInfo.time, gameInfo.isFinished, level);
+    this.leaderboard.displayScore(gameInfo.time);
   }
 })

@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "ranking": "/components/rank/rank",
-    "hover":"/components/hover/hover"
+    "hover":"/components/hover/hover",
+    "leaderboard":"/components/leaderboard/leader"
   }
 }
