@@ -22,7 +22,7 @@
   <view class="control-panel">
     <view wx:if="{{!isStart}}" class="game-control">
       <view class="game-button game-start" bindtap="startGaming">{{controlBtn}}</view>
-      <view class="game-hand" animation="{{animationData}}">
+      <view wx:if="{{isAnimation}}" class="game-hand" animation="{{animationData}}">
           <image class="hand-shape" src="./../../resource/image/hand-o-down.png"></image>
         </view>
     </view>
@@ -32,7 +32,7 @@
           <view class="game-timer-title">计时</view>
           <view class="game-time-count">{{timeText}}</view>
         </view>
-        <view class="game-restart" bindtap="startGaming">
+        <view class="game-restart" bindtap="restartGaming">
           <image class="game-recycle" src="./../../resource/image/restart.png"></image>
           <text>重玩</text>
         </view>
@@ -41,6 +41,6 @@
   </view>
   <!--<button type="primary" bindtap="showRanking">展示结果</button>-->
   <!--<ranking id="ranking"></ranking>-->
-  <hover id="hover"></hover>
+  <hover id="hover" bindtap="childComponent"></hover>
   <leaderboard id="leaderboard"></leaderboard>
 </view>

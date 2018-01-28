@@ -18,7 +18,8 @@ Page({
     restartBtn:"结束",
     time:'100',
     isFinish:false,
-    isStart: false
+    isStart: false,
+    isAnimation: true
   },
   //事件处理函数
   bindViewTap: function() {
@@ -29,6 +30,9 @@ Page({
   onLoad: function () {
     this.shuffle();
     this.initGameInfo();
+    this.setData({
+      isAnimation: true
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -61,7 +65,12 @@ Page({
     this.hover = this.selectComponent("#hover");
     this.leaderboard = this.selectComponent("#leaderboard");
   },
-  onShow:function(){
+  clearAnimation:function(){
+    if (this.intervalTime) {
+      clearInterval(this.intervalTime);
+    }
+  },
+  startAnimation:function(){
     let an = wx.createAnimation({
       duration: 300,
       timingFunction: "linear",
@@ -73,12 +82,12 @@ Page({
     this.setData({
       animationData: an.export()
     });
-    count ++;
+    count++;
     this.intervalTime = setInterval(function () {
       count++;
-      if(count%2 == 1){
+      if (count % 2 == 1) {
         an.top("-200rpx").step();
-      }else{
+      } else {
         an.top("-160rpx").step();
       }
       this.setData({
@@ -127,9 +136,6 @@ Page({
     this.setData({
       isStart: true
     });
-    if (this.intervalTime){
-      clearInterval(this.intervalTime);
-    }
   },
   //重新布局
   shuffle: function() {
@@ -241,6 +247,9 @@ Page({
   startTimer:function(){
     let startTime = Date.now();
     this.startTime = startTime;
+    this.setData({
+      timeText: "00:00:00"
+    })
     this.timer = setInterval((function () {        //update the timer every 1s
       this.updateTimer()
     }).bind(this), 1000);
@@ -274,5 +283,21 @@ Page({
     let level = gameInfo.gameType == 3 ? 1:2;
     //this.ranking.showResult(gameInfo.time, gameInfo.isFinished, level);
     this.leaderboard.displayScore(gameInfo.time);
+  },
+  childComponent(e) {
+    console.log(e.target.offsetTop);
+    if (e.target.offsetTop>441 && e.target.offsetTop < 670) {
+      this.setData({
+        isAnimation:true
+      })
+      this.startAnimation();
+    }
+  },
+  restartGaming() {
+    this.setData({
+      isStart:false,
+      isAnimation:false
+    });
+    this.stopTimer();
   }
 })

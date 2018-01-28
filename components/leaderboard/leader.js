@@ -16,7 +16,8 @@ Component({
     globalMaxScore:10000,
     personMaxScore:5000,
     curretnScore:0,
-    percent: '80%'
+    percent: '80%',
+    title:'数字华容道'
   },
 
   /**

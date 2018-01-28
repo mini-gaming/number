@@ -22,6 +22,7 @@ Component({
       this.setData({
         isHover:true
       })
+      //this.parent.startAnimation();
     }
   }
 

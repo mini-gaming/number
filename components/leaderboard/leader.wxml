@@ -2,7 +2,7 @@
   <view class="leader-hover-mask"></view>
   <view class="leader-main">
     <view class="leader-title">
-      <text>游戏结束</text>
+      <text>{{title}}</text>
     </view>
     <view class="leader-score" align="center">
       <view class="leader-person-score">
