@@ -14,7 +14,7 @@ Page({
     type3:"default",
     type4: "",
     timeText:"00:00:00",
-    controlBtn:"开始",
+    controlBtn:"开始计时",
     restartBtn:"结束",
     time:'100',
     isFinish:false,
@@ -76,7 +76,6 @@ Page({
     count ++;
     this.intervalTime = setInterval(function () {
       count++;
-      console.log('test the animation:' + count);
       if(count%2 == 1){
         an.top("-200rpx").step();
       }else{
