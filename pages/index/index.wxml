@@ -22,6 +22,9 @@
   <view class="control-panel">
     <view wx:if="{{!isStart}}" class="game-control">
       <view class="game-button game-start" bindtap="startGaming">{{controlBtn}}</view>
+      <view class="game-hand" animation="{{animationData}}">
+          <image class="hand-shape" src="./../../resource/image/hand-o-down.png"></image>
+        </view>
     </view>
     <block wx:else>
       <view class="game-restart-panel">

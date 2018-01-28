@@ -158,6 +158,7 @@
   justify-content: space-around;
   display:flex;
   flex-direction: row;
+  position:relative;
 }
 
 .game-button {
@@ -230,4 +231,23 @@
    height: 40rpx;
    margin-top: 40rpx;
    margin-left:70rpx;
+}
+
+@keyframes handclcik {
+  from {top:-200rpx}
+  to {top:-160rpx}
+}
+
+.game-hand {
+  position: absolute;
+  height:160rpx;
+  width:160rpx;
+  top:-200rpx;
+  animation: handclick 1s infinite;
+  -webkit-animation:handclick 1s infinite;
+}
+
+.hand-shape {
+  height:160rpx;
+  width:160rpx;
 }

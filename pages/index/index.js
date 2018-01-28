@@ -61,6 +61,32 @@ Page({
     this.hover = this.selectComponent("#hover");
     this.leaderboard = this.selectComponent("#leaderboard");
   },
+  onShow:function(){
+    let an = wx.createAnimation({
+      duration: 300,
+      timingFunction: "linear",
+      delay: 0
+    });
+    let count = 0;
+    this.an = an;
+    an.top("-160rpx").step();
+    this.setData({
+      animationData: an.export()
+    });
+    count ++;
+    this.intervalTime = setInterval(function () {
+      count++;
+      console.log('test the animation:' + count);
+      if(count%2 == 1){
+        an.top("-200rpx").step();
+      }else{
+        an.top("-160rpx").step();
+      }
+      this.setData({
+        animationData: an.export()
+      })
+    }.bind(this), 300)
+  },
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -101,7 +127,10 @@ Page({
     this.startTimer();
     this.setData({
       isStart: true
-    })
+    });
+    if (this.intervalTime){
+      clearInterval(this.intervalTime);
+    }
   },
   //重新布局
   shuffle: function() {
