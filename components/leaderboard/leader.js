@@ -1,4 +1,5 @@
 // components/leaderboard/leader.js
+const app = getApp()
 
 Component({
   /**
@@ -39,7 +40,10 @@ Component({
     hidden() {
       this.setData({
         isShow: true
-      })
+      });
+      app.globalData.game.setData({
+        isAnimation: false
+      });
     },
     getScore(time) {
       let target = this.data.target;

@@ -1,4 +1,5 @@
 // components/hover/hover.js
+const app = getApp()
 
 Component({
   /**
@@ -22,7 +23,7 @@ Component({
       this.setData({
         isHover:true
       })
-      //this.parent.startAnimation();
+      app.globalData.game.initGame();
     }
   }
 

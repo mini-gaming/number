@@ -19,7 +19,7 @@ Page({
     time:'100',
     isFinish:false,
     isStart: false,
-    isAnimation: true
+    isAnimation: false
   },
   //事件处理函数
   bindViewTap: function() {
@@ -30,9 +30,7 @@ Page({
   onLoad: function () {
     this.shuffle();
     this.initGameInfo();
-    this.setData({
-      isAnimation: true
-    })
+    app.globalData.game = this;
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -284,14 +282,11 @@ Page({
     //this.ranking.showResult(gameInfo.time, gameInfo.isFinished, level);
     this.leaderboard.displayScore(gameInfo.time);
   },
-  childComponent(e) {
-    console.log(e.target.offsetTop);
-    if (e.target.offsetTop>441 && e.target.offsetTop < 670) {
-      this.setData({
-        isAnimation:true
-      })
-      this.startAnimation();
-    }
+  initGame() {
+    this.setData({
+      isAnimation:true
+    })
+    this.startAnimation();
   },
   restartGaming() {
     this.setData({
