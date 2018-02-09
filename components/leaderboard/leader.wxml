@@ -11,18 +11,21 @@
         <text class="person-score-title">的玩家</text>
         <view>
           <text class="person-score">{{timeText}}</text>
+          <text class="person-score font-80">秒</text>
         </view>
       </view>
       <view class="leader-high-score">
         <text class="person-score-title">个人最高</text>
         <view class="person-high-score">
-          <text class="person-score font-80">{{personMinTime}}</text>
+          <text class="person-score font-60">{{personMinTime}}</text>
+          <text class="person-score font-50">秒</text>
         </view>
       </view>
       <view class="leader-high-score">
          <text class="person-score-title">目标脑王</text>
          <view class="person-high-score">
-          <text class="person-score font-80">{{globalMinTime}}</text>
+          <text class="person-score font-60">{{globalMinTime}}</text>
+          <text class="person-score font-50">秒</text>
          </view>
       </view>
       <view class="game-restart" bindtap="hidden">

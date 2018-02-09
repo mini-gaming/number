@@ -80,7 +80,7 @@ const replaceZero = (content) => {
 }
 
 const displayGamingTime = (time) => {
-    let M = replaceZero(formatGameTime(Math.floor(time / (60)) % 60, 'MM'));
+    /*let M = replaceZero(formatGameTime(Math.floor(time / (60)) % 60, 'MM'));
     let S = replaceZero(formatGameTime(Math.floor(time) % 60, 'SS'));
     let H = replaceZero(formatGameTime(Math.floor(time / 3600) % 60, 'HH'));
     let timeText = []
@@ -93,7 +93,8 @@ const displayGamingTime = (time) => {
     if (S) {
       timeText.push(replace(secPattern, S));
     }
-    return timeText.join('');
+    return timeText.join('');*/
+    return time;
 }
 
 module.exports = {

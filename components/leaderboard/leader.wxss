@@ -80,8 +80,18 @@
   font-weight: 700;
 }
 
-.person-score.font-80{
+.person-score.font-60{
   font-size:60rpx;
+  font-weight: 700;
+}
+
+.person-score.font-50{
+  font-size:50rpx;
+  font-weight: 700;
+}
+
+.person-score.font-80{
+  font-size:80rpx;
   font-weight: 700;
 }
 
