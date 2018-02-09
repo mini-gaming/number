@@ -17,12 +17,12 @@ Component({
   data: {
     isShow: true,
     target: 21, // 脑王完成时间，21秒
-    globalMinTime:'21秒',
+    globalMinTime:'21',
     personMinTime:5000,
     curretnTime:0,
     percent: '80%',
     title:'数字华容道',
-    timeText:'0s'
+    timeText:'0'
   },
 
   /**
