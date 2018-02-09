@@ -6,12 +6,12 @@
     </view>
     <view class="game-layout">
       <view class="game-type game-row">
-        <view class="game-n {{type3}} game-col-6" bindtap="set3type">3x3简易版</view>
-        <view class="game-n {{type4}} game-col-6" bindtap="set4type">4x4高级版</view>
+        <view class="game-n {{type3}} game-col-6" bindtap="set3type">小试牛刀</view>
+        <view class="game-n {{type4}} game-col-6" bindtap="set4type">最强小脑</view>
       </view>
       <view class="game-main game-row">
         <view wx:for="{{numbers}}">
-          <view wx:if="{{item > 0}}" data-index="{{index}}" class="game-item game-col-{{n}}" bindtap="move">{{item}}</view>
+          <view wx:if="{{item > 0}}" data-index="{{index}}" class="game-item game-col-{{n}}" bindtouchend="move">{{item}}</view>
           <block wx:else>
             <view class="game-item game-col-{{n}} blank"></view>
           </block>

@@ -1,5 +1,8 @@
 // components/leaderboard/leader.js
 const app = getApp()
+const shareDesc1 = '快来测测你的脑力值'
+const shareDesc2 = '我的脑力值是$s，不服来战'
+const util = require('../../utils/util.js')
 
 Component({
   /**
@@ -14,23 +17,19 @@ Component({
   data: {
     isShow: true,
     target: 21, // 脑王完成时间，21秒
-    globalMaxScore:10000,
-    personMaxScore:5000,
-    curretnScore:0,
+    globalMinTime:'21秒',
+    personMinTime:5000,
+    curretnTime:0,
     percent: '80%',
-    title:'数字华容道'
+    title:'数字华容道',
+    timeText:'0s'
   },
 
   /**
    * 当组件被加载
    */
   onLoad() {
-    let globalMaxScore = this.getGlobalMaxScore();
-    let personMaxScore = this.getPersonalMaxScore();
-    this.setData({
-      globalMaxScore: globalMaxScore,
-      personMaxScore: personMaxScore
-    })
+    //do nothing
   },
 
   /**
@@ -44,10 +43,7 @@ Component({
       app.globalData.game.setData({
         isAnimation: false
       });
-    },
-    getScore(time) {
-      let target = this.data.target;
-      return Math.floor(target/(time-0) * 10000);
+      app.globalData.shareDesc = shareDesc1;
     },
     getGlobalMaxScore(){
       return 10000;
@@ -56,15 +52,34 @@ Component({
       return 6000;
     },
     setCurrentScore(time){
-      let currentScore = this.getScore(time);
+      let timeText = util.displayGamingTime(time);
       this.setData({
-        curretnScore: currentScore
+        timeText: timeText
       })
     },
-    displayScore(time){
-      this.setCurrentScore(time);
+    display(){
       this.setData({
         isShow: false
+      })
+    },
+    displayScore(gameInfo){
+      this.setCurrentScore(gameInfo.time);
+      this.setData({
+        isShow: false,
+        personMinTime:util.displayGamingTime(gameInfo.personalMaxScore),
+        percent: !gameInfo.beatPercent ? '100%' : Math.floor(gameInfo.beatPercent*100)+"%",
+        globalMinTime: util.displayGamingTime(gameInfo.kingScore)
+      })
+      app.globalData.shareDesc = util.replace(shareDesc2, Math.floor(gameInfo.kingScore/gameInfo.time*10000));
+    },
+    showToast(){
+      wx.showModal({
+        title: '晒一晒',
+        content: '【截图】并分享至【朋友圈】，为你的“最强小脑”疯狂打call',
+        showCancel: false,
+        success: function(res){
+          console.log(res);
+        }
       })
     }
   }

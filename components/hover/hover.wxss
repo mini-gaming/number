@@ -57,5 +57,61 @@
 .game-help{
   color: white;
   text-align: center;
-  margin-top:-130rpx;
+  margin-top:-100rpx;
+  cursor: pointer;
+}
+
+.game-main1 {
+  position:fixed;
+  top:0;
+  right:0;
+  left:0;
+  bottom:0;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  z-index:999;
+}
+
+.game-main1.game-help {
+  display:inline-block;
+  padding-left:20rpx;
+  font-size:30rpx;
+  color:white;
+  text-align:left;
+  margin-top: 80rpx;
+}
+
+.game-main1.game-help view {
+  padding: 10rpx 20rpx;
+}
+
+.game-main1.game-help view.padding-left-40 {
+  padding-left:40rpx;
+  padding-right:40rpx;
+}
+
+.game1-cycle {
+  height:180rpx;
+  position:relative;
+  margin: 0 auto;
+  padding: 0 0;
+}
+.cycle1 {
+  display: table;
+  margin: 0 auto;
+  width:180rpx;
+  height:180rpx;
+}
+
+.arrow1 {
+  margin: auto; 
+  position: absolute;  
+  top: -20rpx; 
+  left: 0; 
+  bottom: 0; 
+  right: 0; 
+  height: 56rpx;
+  width:86rpx;
+  transform: rotate(90deg);
 }

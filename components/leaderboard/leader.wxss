@@ -80,6 +80,11 @@
   font-weight: 700;
 }
 
+.person-score.font-80{
+  font-size:60rpx;
+  font-weight: 700;
+}
+
 .leader-high-score{
   display: table;
   margin: 0 auto;
@@ -157,9 +162,45 @@
   font-family: 'PingFangSC-Regular', 'PingFang SC';
   font-weight: 400;
   font-style: normal;
-  font-size: 14px;
+  font-size: 28rpx;
   color: #FFFFFF;
   margin-right:10rpx;
   width:150rpx;
   text-align:center;
+}
+
+.game-box:hover {
+  border:4rpx solid #ffffff;
+  -moz-box-shadow:0 0 4rpx 4rpx #ffffff;               
+	-webkit-box-shadow:0 0 4rpx 4rpx #ffffff;
+	box-shadow:0 0 4rpx 4rpx #ffffff;
+}
+
+.game-box button {
+  padding-left:0px;
+  padding-right:0px;
+  box-sizing:border-box;
+  font-size:28rpx;
+  text-align:center;
+  text-decoration:none;
+  border-radius:0px;
+  -webkit-tap-highlight-color:transparent;
+  overflow:hidden;
+  color:#FFFFFF;
+  background-color:rgba(255, 255, 255, 0);
+  line-height:62rpx;
+}
+
+.game-qrcode{
+  display: table;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  text-align: center;
+  height:160rpx;
+  width: 160rpx;
+}
+
+.game-qrcode image{
+  height:160rpx;
+  width: 160rpx;
 }

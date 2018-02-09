@@ -1,6 +1,6 @@
 <view class="game-hover" hidden="{{isHover}}">
   <view class="game-hover-mask"></view>
-  <view class="game-main">
+  <view wx:if="{{isMain}}" class="game-main">
     <view class="game-logo">
       <image src="./../../resource/image/game-logo.png"></image>
     </view>
@@ -11,8 +11,30 @@
       <image class="cycle" src="./../../resource/image/start-cycle.png"></image>
       <image class="arrow" src="./../../resource/image/start-arrow.png"></image>
     </view>
-    <view class="game-help">
+    <view class="game-help" bindtap="showHelp">
       <text>? 规则</text>
     </view>
   </view>
+  <block wx:else>
+    <view class="game-main1 game-help">
+      <view >训练能力：</view>
+      <view class="padding-left-40">推理力：2</view>
+      <view class="padding-left-40">计算力：1</view>
+      <view class="padding-left-40">观察力：1</view>
+      <view class="padding-left-40">记忆力：1</view>
+      <view class="padding-left-40">空间力：2</view>
+      <view class="padding-left-40">创造力：1</view>
+      <view></view>
+      <view>简单3*3版本--小试牛刀</view>
+      <view class="padding-left-40">格板中共有8个带着数字的方块, 点击方块使其可以移动至空白方块处。最终将方块排列自上而下且自左向右分别为自小至大1~8既为成功。</view>
+      <view>高级4*4版本--最强小脑</view>
+      <view class="padding-left-40">格板中共有15个带着数字的方块, 点击方块使其可以移动至空白方块处。最终将方块排列自上而下且自左向右分别为自小至大1~15既为成功。</view>
+      <view>最强大脑记录： 4*4版本21秒。</view>
+      <view class="game1-cycle" bindtap="hidden">
+        <image class="cycle1" src="./../../resource/image/start-cycle.png"></image>
+        <image class="arrow1" src="./../../resource/image/start-arrow.png"></image>
+      </view>
+    </view>
+  </block>
 </view>
+

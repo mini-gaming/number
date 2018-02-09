@@ -10,19 +10,19 @@
         <text class="person-score-percent">{{percent}}</text>
         <text class="person-score-title">的玩家</text>
         <view>
-          <text class="person-score">{{curretnScore}}</text>
+          <text class="person-score">{{timeText}}</text>
         </view>
       </view>
       <view class="leader-high-score">
         <text class="person-score-title">个人最高</text>
         <view class="person-high-score">
-          <text class="person-score">{{personMaxScore}}</text>
+          <text class="person-score font-80">{{personMinTime}}</text>
         </view>
       </view>
       <view class="leader-high-score">
          <text class="person-score-title">目标脑王</text>
          <view class="person-high-score">
-          <text class="person-score">{{globalMaxScore}}</text>
+          <text class="person-score font-80">{{globalMinTime}}</text>
          </view>
       </view>
       <view class="game-restart" bindtap="hidden">
@@ -30,9 +30,14 @@
         <text>再来一次</text>
       </view>
       <view class="game-more">
-        <view class="game-box share">分享</view>
-        <view class="game-box invite">邀请</view>
+        <view class="game-box share" bindtap="showToast">晒一晒</view>
+        <view class="game-box invite">
+          <button open-type="share">挑战</button>
+        </view>
       </view>
+      <view style="margin:0 auto;">
+          <image class="game-qrcode" src="./../../resource/image/game-qrcode.jpeg"></image>
+        </view>
     </view>
   </view>
 </view>

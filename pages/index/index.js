@@ -2,6 +2,8 @@
 //获取应用实例
 const app = getApp()
 const util = require('../../utils/util.js')
+const service = require('../../service/service.js')
+const zqdnGame = require('../../module/game.js')
 
 Page({
   data: {
@@ -21,6 +23,12 @@ Page({
     isStart: false,
     isAnimation: false
   },
+  onShareAppMessage:function(){
+    return {
+      title:'最强小脑-数字华容道',
+      desc: app.globalData.shareDesc
+    }
+  },
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
@@ -28,9 +36,10 @@ Page({
     })
   },
   onLoad: function () {
-    this.shuffle();
+    this.defaultInit();
     this.initGameInfo();
     app.globalData.game = this;
+    app.globalData.shareDesc = '快来测测你的脑力值';
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -40,6 +49,8 @@ Page({
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
+        console.log('get user info');
+        app.globalData.userInfo = res.userInfo;
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
@@ -120,7 +131,7 @@ Page({
       return;
     }
     this.setData({
-      n: 4.,
+      n: 4,
       type3: '',
       type4: 'default'
     });
@@ -129,35 +140,29 @@ Page({
     this.stopTimer();
   },
   startGaming: function(){
-    this.shuffle();
-    this.startTimer();
     this.setData({
       isStart: true
     });
+    this.shuffle();
+    this.startTimer();
   },
-  //重新布局
-  shuffle: function() {
-    let array = [];//[1,2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0];
-    let n = this.data.n;
-    console.log(this.data.n);
-    for(let i = 0 ; i < n*n -1 ; i++){
-      array.push(i+1);
-    }
-    array.push(0);
-    let counter = array.length;
-    let tmp = null;
-    while(counter > 0){
-      let index = Math.floor(Math.random()*counter);
-      counter--;
-      tmp = array[counter];
-      array[counter] = array[index];
-      array[index] = tmp;
-    }
-    console.log(array);
+  setArrayNum: function(array) {
     app.globalData.numbers = array;
     this.setData({
       numbers: array
     })
+  },
+  defaultInit: function(){
+    this.setArrayNum(util.getDefaultNum(this.data.n));
+  },
+  //重新布局
+  shuffle: function() {
+    //let array = util.shuffleType(this.data.n);
+    if (!this.data.isStart){
+      this.setArrayNum(util.getDefaultNum(this.data.n));
+    }else{
+      this.setArrayNum(util.shuffleType(this.data.n));
+    }
   },
   //是否可以移动
   isMovable: function(index,blankIndex) {
@@ -214,6 +219,10 @@ Page({
   move:function(e){
     let blankIndex = app.globalData.numbers.indexOf(0);
     let index = e.target.dataset.index - 0;
+    let started = this.data.isStart;
+    if (!started) {// 如果还没有开始，不计算
+      return;
+    }
     if (this.isMovable(index,blankIndex)){
       app.globalData.numbers[blankIndex] = app.globalData.numbers[index];
       app.globalData.numbers[index] = 0;
@@ -226,6 +235,10 @@ Page({
   isFinished:function(){
     let numbers = app.globalData.numbers;
     let n = this.data.n || 4;
+    let started = this.data.isStart;
+    if(!started){// 如果还没有开始，不计算
+      return false;
+    }
     for(let i = 0 ; i < n*n;i++){
       if(numbers[i] != i+1 && i != n*n -1){
         return false;
@@ -238,13 +251,12 @@ Page({
     app.globalData.gameInfo.isFinished = true;
     this.setData({
       isStart:false
-    });
+    }); 
     this.showRanking();
     return true;
   },
   startTimer:function(){
-    let startTime = Date.now();
-    this.startTime = startTime;
+    this.startTime = Date.now();
     this.setData({
       timeText: "00:00:00"
     })
@@ -252,11 +264,15 @@ Page({
       this.updateTimer()
     }).bind(this), 1000);
     app.globalData.gameInfo.time = 0;
+    app.globalData.gameInfo.endTime = 0;
+    app.globalData.gameInfo.startTime = 0;
   },
   stopTimer:function(){
     this.timer && clearInterval(this.timer);
     let endTime = Date.now() - this.startTime;
     app.globalData.gameInfo.time = Math.round(endTime/ 1000);
+    app.globalData.gameInfo.endTime = endTime;
+    app.globalData.gameInfo.startTime = this.startTime;
   },
   updateTimer:function(){
     let now = Date.now();
@@ -273,14 +289,22 @@ Page({
     app.globalData.gameInfo = {
       gameType:this.data.n || 3,
       time:0,//ss
-      isFinished:false
+      isFinished:false,
+      endTime:0,
+      startTime:0
     }
   },
   showRanking() {
-    let gameInfo = app.globalData.gameInfo;
-    let level = gameInfo.gameType == 3 ? 1:2;
-    //this.ranking.showResult(gameInfo.time, gameInfo.isFinished, level);
-    this.leaderboard.displayScore(gameInfo.time);
+    let leaderboard = this.leaderboard;
+    let gameInfo = zqdnGame.createGameInfo(app.globalData.userInfo.userId,app.globalData.gameInfo);
+    leaderboard.display();
+    service.post(gameInfo,'/game/record',function(ret){
+      let personalTime = ret.data.data;
+      personalTime.time = gameInfo.score;
+      leaderboard.displayScore(personalTime);
+    })
+    // let gameInfo = ;
+    // this.ranking.showResult(gameInfo.time, gameInfo.isFinished, level);
   },
   initGame() {
     this.setData({

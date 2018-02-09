@@ -12,7 +12,15 @@ Component({
    * 组件的初始数据
    */
   data: {
-    isHover:false
+    isHover:false,
+    isMain:true,
+  },
+
+  onLoad(){
+    this.setData({
+      isHover:false,
+      isMain:true
+    })
   },
 
   /**
@@ -24,6 +32,11 @@ Component({
         isHover:true
       })
       app.globalData.game.initGame();
+    },
+    showHelp(){
+      this.setData({
+        isMain:false
+      })
     }
   }
 
